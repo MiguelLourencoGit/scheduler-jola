@@ -26,6 +26,9 @@ jobs:
         run: |
           echo "${{ secrets.CREDENTIALS_SECRET }}" > credentials.json
 
+      - name: Verificar conteúdo do JSON
+        run: cat credentials.json
+
       - name: Correr o script
         run: |
           python main.py

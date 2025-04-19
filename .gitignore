@@ -42,6 +42,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+nome_do_ambiente/
+
 
 # Ambiente virtual 'sheets'
 sheets/
