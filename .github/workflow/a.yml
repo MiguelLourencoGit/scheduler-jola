@@ -1,0 +1,31 @@
+name: Daily Price Check
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # todos os dias às 12:00 UTC
+  workflow_dispatch:  # para poderes correr manualmente se quiseres
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+
+      - name: Criar ficheiro credentials.json
+        run: |
+          echo "${{ secrets.CREDENTIALS_JSON }}" > credentials.json
+
+      - name: Correr o script
+        run: |
+          python main.py
