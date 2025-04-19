@@ -28,8 +28,7 @@ jobs:
 
       - name: Criar ficheiro credentials.json
         run: |
-          echo "${{ secrets.CREDENTIALS_SECRET }}" | sed 's/\\n/\n/g' > credentials.json
-
+          echo "${{ secrets.CREDENTIALS_SECRET }}" | base64 --decode > credentials.json
 
       - name: Verificar conteúdo do JSON
         run: cat credentials.json
