@@ -22,9 +22,14 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      # - name: Criar ficheiro credentials.json
+      #   run: |
+      #     echo "${{ secrets.CREDENTIALS_SECRET }}" > credentials.json
+
       - name: Criar ficheiro credentials.json
         run: |
-          echo "${{ secrets.CREDENTIALS_SECRET }}" > credentials.json
+          echo "${{ secrets.CREDENTIALS_SECRET }}" | sed 's/\\n/\n/g' > credentials.json
+
 
       - name: Verificar conteúdo do JSON
         run: cat credentials.json
