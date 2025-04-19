@@ -54,4 +54,4 @@ credentials.json
 .idea/
 
 # Log files
-*.log
+#*.log
